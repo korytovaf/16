@@ -1,0 +1,44 @@
+.message {
+    padding: 10px;
+    background-color: white;
+    box-shadow:0 0 10px 1px rgba(0,0,0,0.14);
+    position: relative;
+}
+
+.message__text {
+    background-color: white;
+    padding: 10px;
+    margin-right: 24px;
+}
+
+.message__details {
+    display: flex;
+    margin-top: 10px;
+    border-top: 1px solid #d5d2d2;
+    justify-content: space-between;
+}
+
+.message__remove {
+    position: absolute;
+    width: 22px;
+    height: 20px;
+    margin-left: auto;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 2px;
+    border: none;
+    color: red;
+    line-height: 10px;
+    font-size: 18px;
+    right: 5px;
+    top: 5px;
+}
+
+.message__author {
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+.message__time {
+    font-size: 12px;
+}

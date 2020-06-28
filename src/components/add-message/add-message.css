@@ -1,0 +1,30 @@
+.newMessage {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    gap: 15px;
+}
+
+.newMessage__text {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    border: none;
+    min-height: 80px;
+    padding: 8px;
+}
+
+.newMessage__author {
+    grid-column: 1 / 2;
+    border: none;
+    padding: 8px;
+
+}
+
+.newMessage__button {
+    grid-column: 2 / -1;
+    width: 45px;
+    margin-left: auto;
+    background-color: transparent;
+    color: #00a35b;
+    border: none;
+    font-size: 30px;
+}
