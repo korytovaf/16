@@ -1,24 +1,24 @@
-.message {
+.comment {
     padding: 10px;
     background-color: white;
     box-shadow:0 0 10px 1px rgba(0,0,0,0.14);
     position: relative;
 }
 
-.message__text {
+.comment__text {
     background-color: white;
     padding: 10px;
     margin-right: 24px;
 }
 
-.message__details {
+.comment__details {
     display: flex;
     margin-top: 10px;
     border-top: 1px solid #d5d2d2;
     justify-content: space-between;
 }
 
-.message__remove {
+.comment__remove {
     position: absolute;
     width: 22px;
     height: 20px;
@@ -34,11 +34,11 @@
     top: 5px;
 }
 
-.message__author {
+.comment__author {
     margin: 0 10px;
     font-size: 12px;
 }
 
-.message__time {
+.comment__time {
     font-size: 12px;
 }

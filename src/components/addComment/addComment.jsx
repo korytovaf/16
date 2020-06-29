@@ -1,8 +1,7 @@
 import React from "react";
 import './add-message.css'
 
-const NewMessage = (props) => {
-
+const AddComment = (props) => {
 
     return (
         <div className='newMessage'>
@@ -15,12 +14,12 @@ const NewMessage = (props) => {
             <input
                 className='newMessage__author'
                 type="text"
-                value={props.state.newMessageAuthor}
-                onChange={props.onNewMessageAuthorChange}
+                value={props.state.newCommentAuthor}
+                onChange={props.onNewCommentAuthorChange}
             />
             <button onClick={props.addMessage} className='newMessage__button'>&#10148;</button>
         </div>
     );
 }
 
-export default NewMessage
+export default AddComment

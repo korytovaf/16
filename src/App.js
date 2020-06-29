@@ -1,79 +1,79 @@
 import React from 'react';
 import './App.css';
-import Messages from "./components/messages/messages";
-import NewMessage from "./components/add-message/add-message";
+import Comment from "./components/comment/comment";
+import AddComment from "./components/addComment/addComment";
 
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: JSON.parse((localStorage.getItem('localMessages'))) || [],
-            newMessageText: '',
-            newMessageAuthor: '',
+            comments: JSON.parse((localStorage.getItem('localComments'))) || [],
+            newCommentText: '',
+            newCommentAuthor: '',
         };
 
 
-        this.Message = () => {
+        this.Comment = () => {
             return (
-                this.state.messages.map( (message, i) =>
-            <Messages
-                state={this.state.messages}
+                this.state.comments.map( (comment, i) =>
+            <Comment
+                state={this.state.comments}
                 key={i}
-                messageText={message.messageText}
-                messageTime={message.messageTime}
-                messageAuthor={message.messageAuthor}
-                removeMessage={this.removeMessage.bind(this, i)}
+                commentText={comment.commentText}
+                commentTime={comment.commentTime}
+                commentAuthor={comment.commentAuthor}
+                removeComment={this.removeComment.bind(this, i)}
             />))
         };
     }
 
-    addMessage() {
+    addComment() {
         const time = new Date();
 
-        const stateCopy = [...this.state.messages];
+        const stateCopy = [...this.state.comments];
         stateCopy.push({
-            messageText: this.state.newMessageText,
-            messageTime: time.toLocaleString('ru-RU'),
-            messageAuthor: this.state.newMessageAuthor,
+            commentText: this.state.newCommentText,
+            commentTime: time.toLocaleString('ru-RU'),
+            commentAuthor: this.state.newCommentAuthor,
         });
-        localStorage.setItem('localMessages', JSON.stringify(stateCopy));
-        this.setState({newMessageText: '', newMessageAuthor: ''})
+        localStorage.setItem('localComments', JSON.stringify(stateCopy));
+        this.setState({newCommentText: '', newCommentAuthor: ''})
         this.setState(() => ({
-            messages: stateCopy
+            comments: stateCopy
         }))
     }
 
 
-    removeMessage(i) {
-        const stateCopy = [...this.state.messages];
+    removeComment(i) {
+        const stateCopy = [...this.state.comments];
         stateCopy.splice(i, 1);
-        localStorage.setItem('localMessages', JSON.stringify(stateCopy));
+        localStorage.setItem('localComments', JSON.stringify(stateCopy));
         this.setState(() => ({
-            messages: stateCopy
+            comments: stateCopy
         }))
     }
 
 
-    onNewMessageTextChange(e) {
-        let textMessages = e.target.value;
-        this.setState({newMessageText: textMessages})
+    onNewCommentTextChange(e) {
+        let textComment = e.target.value;
+        this.setState({newCommentText: textComment})
     }
 
-    onNewMessageAuthorChange(e) {
+    onNewCommentAuthorChange(e) {
         let textAuthor = e.target.value;
-        this.setState({newMessageAuthor: textAuthor})
+        this.setState({newCommentAuthor: textAuthor})
     }
 
 
     render() {
         return (
             <div className='wrapper'>
-                {this.Message()}
-                <NewMessage
-                    addMessage={this.addMessage.bind(this)}
-                    onNewMessageTextChange={this.onNewMessageTextChange.bind(this)}
-                    onNewMessageAuthorChange={this.onNewMessageAuthorChange.bind(this)}
+                {this.Comment()}
+                <AddComment
+                    addComment={this.addComment.bind(this)}
+                    onNewCommentTextChange={this.onNewCommentTextChange.bind(this)}
+                    onNewCommentAuthorChange={this.onNewCommentAuthorChange.bind(this)}
                     state={this.state}
                 />
             </div>
