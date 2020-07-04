@@ -1,16 +1,15 @@
-export const ON_NEW_COMMENT_TEXT_CHANGE = 'ON_NEW_COMMENT_TEXT_CHANGE'
-export const ON_NEW_COMMENT_AUTHOR_CHANGE = 'ON_NEW_COMMENT_AUTHOR_CHANGE'
 
-export function onNewCommentTextChange(newCommentText) {
+
+export const commentTextChange = (value) => {
     return {
-        type: ON_NEW_COMMENT_TEXT_CHANGE,
-        payload: newCommentText,
+        type: 'COMMENT_TEXT_CHANGE',
+        value: value.currentTarget.value
     }
 }
 
-export function onNewCommentAuthorChange(newCommentAuthor) {
+export const commentAuthorChange = (value) => {
     return {
-        type: ON_NEW_COMMENT_AUTHOR_CHANGE,
-        payload: newCommentAuthor,
+        type: 'COMMENT_AUTHOR_CHANGE',
+        value: value.currentTarget.value
     }
 }

@@ -1,25 +1,23 @@
 import React from "react";
-import './add-message.css'
+import './addComment.css'
 
-const AddComment = (props) => {
+export const AddComment = ({newTextChange, newAuthorChange, commentTextChange, commentAuthorChange}) => {
+        return (
+            <div className='addComment'>
+                <textarea
+                    className='addComment__text'
+                    value={newTextChange}
+                    onChange={commentTextChange}
+                />
 
-    return (
-        <div className='newMessage'>
-            <textarea
-                className='newMessage__text'
-                value={props.state.newMessageText}
-                onChange={props.onNewMessageTextChange}
-            />
+                <input
+                    className='addComment__author'
+                    type="text"
+                    value={newAuthorChange}
+                    onChange={commentAuthorChange}
 
-            <input
-                className='newMessage__author'
-                type="text"
-                value={props.state.newCommentAuthor}
-                onChange={props.onNewCommentAuthorChange}
-            />
-            <button onClick={props.addMessage} className='newMessage__button'>&#10148;</button>
-        </div>
-    );
+                />
+                <button  className='addComment__button'>&#10148;</button>
+            </div>
+        );
 }
-
-export default AddComment
