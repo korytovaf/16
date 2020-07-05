@@ -4,16 +4,16 @@ import './index.css';
 import App from './App';
 import {Provider} from "react-redux";
 import {createStore} from "redux";
-import {AddCommentReducer} from "./reducer/AddCommentReducer";
+import {reducer} from "./reducer/reducer";
 
 
 const initialState = {
-    // comments: JSON.parse((localStorage.getItem('localMessages'))) || [],
+    comments: JSON.parse((localStorage.getItem('localComments'))) || [],
     newCommentText: '',
     newCommentAuthor: '',
 }
 
-const store = createStore( AddCommentReducer, initialState )
+const store = createStore( reducer, initialState )
 
 ReactDOM.render(
       <Provider store = {store} >

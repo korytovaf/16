@@ -1,21 +1,23 @@
 import React from "react";
 import {connect} from "react-redux";
 import './App.css';
-import {commentTextChange, commentAuthorChange} from "./actions/addCommentAction";
+import {commentTextChange, commentAuthorChange, addComment, removeComment} from "./actions/actions";
 import {AddComment} from "./components/addComment/addComment";
 import Comment from "./components/comment/comment";
 
 
 const App = (props) => {
-    const { AddCommentReducer, commentTextChange, commentAuthorChange } = props;
+    const { comments, commentTextChange, commentAuthorChange, addComment, removeComment } = props;
          return (
             <div className='wrapper'>
-                <Comment />
+                <Comment comments={comments} removeComment={removeComment} />
                 <AddComment
+                    id={comments.id}
                     commentTextChange={commentTextChange}
-                    newTextChange={AddCommentReducer.newCommentText}
+                    newTextChange={comments.newCommentText}
                     commentAuthorChange={commentAuthorChange}
-                    newAuthorChange={AddCommentReducer.newCommentAuthor}
+                    newAuthorChange={comments.newCommentAuthor}
+                    addComment={addComment}
                 />
             </div>
         );
@@ -23,14 +25,16 @@ const App = (props) => {
 
 const mapStateToProps = state => {
     return {
-        AddCommentReducer: state
+        comments: state
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         commentTextChange: (value) => dispatch(commentTextChange(value)),
-        commentAuthorChange: (value) => dispatch(commentAuthorChange(value))
+        commentAuthorChange: (value) => dispatch(commentAuthorChange(value)),
+        addComment: (id, commentText, commentAuthor, commentTime ) => dispatch(addComment( id, commentText, commentAuthor, commentTime )),
+        removeComment: (key) => dispatch(removeComment(key)),
     }
 }
 

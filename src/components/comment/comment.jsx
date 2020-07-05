@@ -4,15 +4,25 @@ import './comment.css';
 
 const Comment = (props) => {
 
+    const { comments, removeComment } = props;
+
     return (
-        <div className='comment'>
-            <div className='comment__text'>{props.commentText}</div>
-            <div className='comment__details'>
-                <div className='comment__author'>{props.commentAuthor}</div>
-                <div className='comment__time'>{props.commentTime}</div>
-                <button onClick={props.removeComment} className='comment__remove'>&#10008;</button>
-            </div>
-        </div>
+        <ol>
+            {
+                comments.comments.map((comment, index) => {
+                    return (
+                        <li key={index} className='comment'>
+                            <div className='comment__text'>{comment.commentText}</div>
+                            <div className='comment__details'>
+                                <div className='comment__author'>{comment.commentAuthor}</div>
+                                <div className='comment__time'>{comment.commentTime}</div>
+                                <button onClick={removeComment} className='comment__remove'>&#10008;</button>
+                            </div>
+                        </li>
+                    );
+                })
+            }
+        </ol>
     );
 }
 
