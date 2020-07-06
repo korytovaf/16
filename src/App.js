@@ -12,7 +12,6 @@ const App = (props) => {
             <div className='wrapper'>
                 <Comment comments={comments} removeComment={removeComment} />
                 <AddComment
-                    id={comments.id}
                     commentTextChange={commentTextChange}
                     newTextChange={comments.newCommentText}
                     commentAuthorChange={commentAuthorChange}
@@ -33,8 +32,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         commentTextChange: (value) => dispatch(commentTextChange(value)),
         commentAuthorChange: (value) => dispatch(commentAuthorChange(value)),
-        addComment: (id, commentText, commentAuthor, commentTime ) => dispatch(addComment( id, commentText, commentAuthor, commentTime )),
-        removeComment: (key) => dispatch(removeComment(key)),
+        addComment: ( commentText, commentAuthor, commentTime ) => dispatch(addComment( commentText, commentAuthor, commentTime )),
+        removeComment: (id) => dispatch(removeComment(id)),
     }
 }
 

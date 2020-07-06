@@ -15,7 +15,6 @@ export const commentAuthorChange = (value) => {
 export const addComment = ( id, commentText, commentAuthor, commentTime ) => {
     return {
         type: 'ADD_COMMENT',
-        id,
         commentText,
         commentAuthor,
         commentTime,
